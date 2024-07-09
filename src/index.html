@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <title>Document</title>
+</head>
+<body>
+        <!-- テンプレートが表示される場所 -->
+        <section id="js-content" class="c-gallery">
+        <!-- テンプレートの内容を書く場所 -->
+        <template id="js-card">
+            <a href="" class="js-card_link c-gallery__card">
+            <img src="" alt="" class="js-card_image" />
+            <dl>
+                <dt class="js-card_title"></dt>
+                <dd class="js-card_caption"></dd>
+            </dl>
+            </a>
+        </template>
+        </section>
+    <script>
+        // card要素に追加したいデータを定義する
+
+        let addData = {
+            card_link:"test.html",
+            card_image:
+            "NotFound.webp",
+            card_title: "AAAAAAAAAAAAAA",
+            card_caption: "カードのキャプション01",
+            category:"cat1",
+        };
+        localStorage.setItem(addData.category+'_'+addData.card_link,JSON.stringify(addData));
+
+const array = [];
+
+// array.push(JSON.parse(localStorage.getItem(addData.category+'_'+addData.card_link)));
+
+for(let i = 0;i<localStorage.length;i++){
+    array.push(localStorage.key(i));
+}
+
+// card要素を取得して定義
+const card = document.getElementById("js-card");
+
+for (let i = 0; i < array.length; i++) {
+  // 定義したcard要素を複製する
+  const card_content = card.content.cloneNode(true);
+
+  // 複製したcard要素にデータを挿入
+  card_content.querySelector(".js-card_link").href = array[i].card_link;
+  card_content.querySelector(".js-card_image").src = array[i].card_image;
+  card_content.querySelector(".js-card_title").textContent =
+	array[i].card_title;
+  card_content.querySelector(".js-card_caption").innerHTML =
+	array[i].card_caption + "について書きました";
+
+  // #js-contentに追加
+  document.getElementById("js-content").appendChild(card_content);
+}
+    </script>
+</body>
+</html>

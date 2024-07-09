@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIGHIGH</title>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+<body>
+    <div class="selectdiv">
+  <label>
+      <select id = "catSelect" onchange="setKey()">
+          <!-- <option selected> Select Box </option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Last long option</option> -->
+      </select>
+  </label>
+  <button onclick="location.href='CategoryPage.html'">Show Category</button>
+    <div class="popup" id="add_URL_popup">addURL</div>             <!-- URL追加 -->
+    <div class="popup" id="change_URL_popup">editURL</div>             <!--URL編集-->
+    <div class="popup" id="add_category_popup">addCategory</div>            <!--カテゴリー追加-->
+</div>
+    <script>
+        window.onload = function(){
+            localStorage.setItem("animal_hey","value")
+            let sl = document.getElementById('catSelect'); //対象のselect取得
+
+            if(sl.length<localStorage.length){    //selectが空の時のみ関数実行
+                for(let num = 0;num<localStorage.length;num++){      //arrの要素数を0から順にnumに入れて繰り返し処理
+                    let op = document.createElement('option');  //optionを新しく毎回作る
+                    op.text = localStorage.key(num);                         //optionのテキストに配列[num番目]の値を入れる 
+                    if(op.text.indexOf('_')){
+                        op.text = op.text.split('_')[0];
+                        sl.appendChild(op);                         //optionをselectに追加
+                    }
+                }
+            }
+        };
+
+        function setKey(){
+            const value = document.getElementById("catSelect").value;
+            localStorage.setItem("CategoryName",value);
+        }
+    </script>
+</body>
+</html>
