@@ -30,7 +30,7 @@
                 for(let num = 0;num<localStorage.length;num++){      //arrの要素数を0から順にnumに入れて繰り返し処理
                     let op = document.createElement('option');  //optionを新しく毎回作る
                     op.text = localStorage.key(num);                         //optionのテキストに配列[num番目]の値を入れる 
-                    if(op.text.indexOf('_')){
+                    if(op.text.indexOf('_') != -1){
                         op.text = op.text.split('_')[0];
                         sl.appendChild(op);                         //optionをselectに追加
                     }
