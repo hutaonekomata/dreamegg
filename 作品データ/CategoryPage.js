@@ -51,7 +51,7 @@ window.onload=function onload(){//ページが更新されたら
             nowdeta[2]=nowbasedeta[2].replace('tag','');
             //nowdeta[3]=nowbasedeta[3].replace('3Dodj_link','');
             //alert(includes(nowdeta[0]));
-            if(localStorage.getItem('keyword')==null||nowdeta[0].includes(localStorage.getItem('keyword'))){
+            if(localStorage.getItem('keyword')==null||nowdeta[0].includes(localStorage.getItem('keyword'))||nowdeta[2].includes(localStorage.getItem("keyword"))){
                 setpoint.insertAdjacentHTML('afterend','<section id="sec" class="sec"><h7>タイトル</h7><div class="content"><a href="リンク先.html" class="content-link"><p>リンク</p></a><p class="content-setup">設定</p></div></section>');
                 //セクションを入力
                 const idName="sec"+i;//id名を代入
