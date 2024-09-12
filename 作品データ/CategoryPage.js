@@ -58,13 +58,16 @@ window.onload=function onload(){//ページが更新されたら
                 const idChe=document.getElementById('sec');//セクションのようそを得る
                 idChe.id=idName;//idを変更
                 document.getElementById(idName).innerHTML='<iframe src="./model.html" id="renderCanvas6" title="Viewer demo" scrolling="no" frameborder="no" loading="lazy"></iframe><h7>名前：'+nowdeta[0]+'</h7><div class="content"><p>リンク：</p><a href="'+nowdeta[1]+'" target="_blank" class="content-link"><p>'+nowdeta[1].substr(0,50)+'</p></a><p class="content-setup" id="'+nowdeta[0]+'">編集</p><p class="content-setup" id="'+nowdeta[0]+'Delete">削除</p></div>';
+
                 //document.getElementById(idName).innerHTML='<h7>名前：'+nowdeta[0]+'</h7><div class="content"><p>リンク：</p><a href="'+nowdeta[1]+'" target="_blank" class="content-link"><p>'+nowdeta[1].substr(0,50)+'</p></a><p class="content-setup" id="'+nowdeta[0]+'">編集</p><p class="content-setup" id="'+nowdeta[0]+'Delete">削除</p></div>';
                 //セクションの内容を変更
                 /*
                 document.getElementById(nowdeta[0]).addEventListener('click',function(){
                     localStorage.setItem('edit',event.target.id);
                 });*/
+
                 document.getElementById(nowdeta[0]+'Delete').addEventListener('click',function(){
+
                     localStorage.removeItem(localStorage.getItem('CategoryName')+'_'+event.target.id.replace('Delete',''));//文字の引き算
                     window.location.reload();
                 });
