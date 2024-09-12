@@ -49,21 +49,25 @@ window.onload=function onload(){//ページが更新されたら
             nowdeta[0]=nowbasedeta[1].replace('Name','');
             nowdeta[1]=nowbasedeta[0].replace('URL','');
             nowdeta[2]=nowbasedeta[2].replace('tag','');
-
-            if(localStorage.getItem('keyword')==null||nowdeta[1].includes(localStorage.getItem('keyword'))||nowdeta[2].includes(localStorage.getItem("keyword"))){
+            //nowdeta[3]=nowbasedeta[3].replace('3Dodj_link','');
+            //alert(includes(nowdeta[0]));
+            if(localStorage.getItem('keyword')==null||nowdeta[0].includes(localStorage.getItem('keyword'))||nowdeta[2].includes(localStorage.getItem("keyword"))){
                 setpoint.insertAdjacentHTML('afterend','<section id="sec" class="sec"><h7>タイトル</h7><div class="content"><a href="リンク先.html" class="content-link"><p>リンク</p></a><p class="content-setup">設定</p></div></section>');
                 //セクションを入力
                 const idName="sec"+i;//id名を代入
                 const idChe=document.getElementById('sec');//セクションのようそを得る
                 idChe.id=idName;//idを変更
-                document.getElementById(idName).innerHTML='<iframe src="./model.html" id="renderCanvas6" title="Viewer demo" scrolling="no" frameborder="no" loading="lazy"></iframe><div><h7>名前：'+nowdeta[0]+'</h7></div><h7>タグ: '+nowdeta[2]+'</h7><div class="content"><p>リンク：</p><a href="'+nowdeta[1]+'" target="_blank" class="content-link"><p>'+nowdeta[1].substr(0,50)+'</p></a><p class="content-setup" id="'+nowdeta[0]+'">編集</p><p class="content-setup" id="'+nowdeta[1]+'Delete">削除</p></div>';
+                document.getElementById(idName).innerHTML='<iframe src="./model.html" id="renderCanvas6" title="Viewer demo" scrolling="no" frameborder="no" loading="lazy"></iframe><h7>名前：'+nowdeta[0]+'</h7><div class="content"><p>リンク：</p><a href="'+nowdeta[1]+'" target="_blank" class="content-link"><p>'+nowdeta[1].substr(0,50)+'</p></a><p class="content-setup" id="'+nowdeta[0]+'">編集</p><p class="content-setup" id="'+nowdeta[0]+'Delete">削除</p></div>';
+
                 //document.getElementById(idName).innerHTML='<h7>名前：'+nowdeta[0]+'</h7><div class="content"><p>リンク：</p><a href="'+nowdeta[1]+'" target="_blank" class="content-link"><p>'+nowdeta[1].substr(0,50)+'</p></a><p class="content-setup" id="'+nowdeta[0]+'">編集</p><p class="content-setup" id="'+nowdeta[0]+'Delete">削除</p></div>';
                 //セクションの内容を変更
                 /*
                 document.getElementById(nowdeta[0]).addEventListener('click',function(){
                     localStorage.setItem('edit',event.target.id);
                 });*/
-                document.getElementById(nowdeta[1]+'Delete').addEventListener('click',function(){
+
+                document.getElementById(nowdeta[0]+'Delete').addEventListener('click',function(){
+
                     localStorage.removeItem(localStorage.getItem('CategoryName')+'_'+event.target.id.replace('Delete',''));//文字の引き算
                     window.location.reload();
                 });
